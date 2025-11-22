@@ -13,6 +13,8 @@ const { startArchiveExpiredTransactions } = require("./jobs/archiveExpiredTransa
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const PUBLIC_URL = process.env.PUBLIC_URL || `http://localhost:${PORT}`;
+
 
 // Security middleware
 app.use(helmet());
@@ -56,10 +58,10 @@ app.use(notFoundHandler);
 app.use(errorHandler);
 
 // Start server
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`🚀 Server is running on http://0.0.0.0:${PORT}`);
+app.listen(PORT, () => {
+  console.log(`🚀 Server is running on port ${PORT}`);
+  console.log(`🌐 Public URL (use this for clients): ${PUBLIC_URL}`);
   console.log(`🌍 Environment: ${process.env.NODE_ENV || "development"}`);
-  console.log(`📡 Local network URL: http://192.168.1.161:${PORT}/health`);
 
   if (process.env.RUN_JOBS === "true") {
     startTransactionChecker();
