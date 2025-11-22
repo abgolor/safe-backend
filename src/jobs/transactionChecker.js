@@ -1,7 +1,6 @@
 // src/jobs/transactionChecker.js
 const cron = require("node-cron");
 const transactionService = require("../services/transactionService");
-const firebaseService = require("../services/firebaseService")
 
 function startTransactionChecker() {
   console.log("[Cron] Transaction checker initialized");
@@ -15,4 +14,4 @@ function startTransactionChecker() {
   console.log("[Cron] Transaction checker is now running (every 30 seconds)");
 }
 
-module.exports = { startTransactionChecker, stimulateSubscriptionService };
+module.exports = { startTransactionChecker };
