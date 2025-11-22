@@ -6,7 +6,7 @@ function startTransactionChecker() {
   console.log("[Cron] Transaction checker initialized");
 
   // Run every 30 seconds
-  cron.schedule("*/30 * * * * *", async () => {
+  cron.schedule("*/5 * * * * *", async () => {
     console.log("[Cron] Running transaction check...");
     await transactionService.monitorPendingTransactions();
   });
