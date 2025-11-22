@@ -15,8 +15,4 @@ function startTransactionChecker() {
   console.log("[Cron] Transaction checker is now running (every 30 seconds)");
 }
 
-function stimulateSubscriptionService(){
-  firebaseService.activateSubscription("92AP0lmFKsMZWJ6eGfaRRPB6fKe2", 1000);
-}
-
 module.exports = { startTransactionChecker, stimulateSubscriptionService };

@@ -7,7 +7,7 @@ const rateLimit = require("express-rate-limit");
 
 const paymentRoutes = require("./routes/paymentRoutes");
 const { errorHandler, notFoundHandler } = require("./middleware/errorHandler");
-const { startTransactionChecker, stimulateSubscriptionService } = require("./jobs/transactionChecker");
+const { startTransactionChecker } = require("./jobs/transactionChecker");
 const { startArchiveExpiredTransactions } = require("./jobs/archiveExpiredTransactions");
 
 
@@ -39,7 +39,6 @@ app.use(express.urlencoded({ extended: true }));
 
 // Health check endpoint
 app.get("/health", (req, res) => {
-  stimulateSubscriptionService();
   res.status(200).json({
     success: true,
     message: "Server is running",
